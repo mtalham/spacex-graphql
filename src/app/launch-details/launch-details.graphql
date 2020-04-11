@@ -3,9 +3,16 @@ query launchDetails($id: ID!) {
     id
     mission_name
     details
+    launch_success
+    launch_date_utc
     links {
       flickr_images
       mission_patch
+      video_link
+      article_link
+    }
+    launch_site {
+      site_name_long
     }
   }
 }

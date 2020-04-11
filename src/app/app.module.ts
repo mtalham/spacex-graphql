@@ -9,13 +9,15 @@ import { LaunchListComponent } from './launch-list/launch-list.component';
 import { LaunchDetailsComponent } from './launch-details/launch-details.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
-import {MatCardModule} from '@angular/material';
+import {MatCardModule, MatToolbarModule} from '@angular/material';
+import {RelativeTimePipe} from './relative-time/relative-time.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LaunchListComponent,
-    LaunchDetailsComponent
+    LaunchDetailsComponent,
+    RelativeTimePipe
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import {MatCardModule} from '@angular/material';
     BrowserAnimationsModule,
     GraphQLModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
