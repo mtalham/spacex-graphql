@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {LaunchDetailsGQL} from '../services/spacexGraphql.service';
 import {map, switchMap} from 'rxjs/operators';
@@ -9,12 +9,13 @@ import {map, switchMap} from 'rxjs/operators';
   styleUrls: ['./launch-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LaunchDetailsComponent implements OnInit {
+export class LaunchDetailsComponent {
 
   constructor(
     private route: ActivatedRoute,
     private launchDetails: LaunchDetailsGQL
-  ) { }
+  ) {
+  }
 
   launchDetails$ = this.route.paramMap.pipe(
     switchMap(params => {
@@ -24,7 +25,7 @@ export class LaunchDetailsComponent implements OnInit {
     map(res => res.data.launch)
   );
 
-  ngOnInit() {
+  openLink(link: string) {
+    window.open(link);
   }
-
 }

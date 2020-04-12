@@ -1,7 +1,51 @@
 .photo-grid {
-  padding-top: 30px;
+  padding-bottom: 30px;
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(auto-fill, 300px);
+  grid-template-columns: repeat(auto-fill, 500px);
   justify-content: center;
+}
+
+mat-card-content {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+   p {
+     font-size: initial;
+     line-height: 24px;
+   }
+}
+
+.image {
+  height: 300px;
+  padding-left: 16px;
+  border-right: 1px solid #00838f;
+}
+
+.launchInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: initial;
+  div {
+    padding-right: 16px;
+  }
+
+  span {
+    font-weight: bold;
+    margin-left: 8px;
+  }
+}
+
+mat-card-actions {
+  button {
+    font-size: initial;
+  }
 }

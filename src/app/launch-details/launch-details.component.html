@@ -1,16 +1,37 @@
 <ng-container *ngIf="launchDetails$ | async as launchDetails">
-  <section style="padding-top: 20px">
-    <mat-card style="width: 400px; margin: auto;">
-      <mat-card-header>
-        <mat-card-title>{{ launchDetails.mission_name }}</mat-card-title>
-      </mat-card-header>
-      <img
-        mat-card-image
-        [src]="launchDetails.links.mission_patch"
-        alt="Mission patch of {{ launchDetails.mission_name }}"
-      />
+  <section style="padding: 30px">
+    <mat-card>
       <mat-card-content>
-        <p>{{ launchDetails.details }}</p>
+        <img
+          width="300"
+          [src]="launchDetails.links.mission_patch"
+          alt="Mission patch of {{ launchDetails.mission_name }}"
+        />
+        <div class="image"></div>
+        <div class="details">
+          <h1 style="font-size: xx-large">{{ launchDetails.mission_name }}</h1>
+          <div class="launchInfo">
+            <div>Site name:
+              <span>{{launchDetails.launch_site.site_name_long}}</span>
+            </div>
+            <div style="display: flex; align-items: center">Successful:
+              <span>
+                <mat-icon style="color: limegreen" *ngIf="launchDetails.launch_success">done_all</mat-icon>
+                <mat-icon color="warn" *ngIf="!launchDetails.launch_success">clear</mat-icon>
+              </span>
+            </div>
+            <div>Date:
+              <span>{{launchDetails.launch_date_utc | date:'yyyy-MM-dd'}}</span>
+            </div>
+          </div>
+          <mat-divider inset style="margin-top: 12px"></mat-divider>
+          <p>{{ launchDetails.details }}</p>
+          <mat-divider inset style="margin-top: 12px"></mat-divider>
+          <mat-card-actions>
+            <button mat-button (click)="openLink(launchDetails.links.video_link)">Watch video</button>
+            <button mat-button (click)="openLink(launchDetails.links.article_link)">Go to article</button>
+          </mat-card-actions>
+        </div>
       </mat-card-content>
     </mat-card>
   </section>
@@ -19,8 +40,8 @@
       *ngFor="let pic of launchDetails.links.flickr_images"
       [src]="pic"
       alt="Picture of {{ launchDetails.mission_name }}"
-      height="300"
-      width="300"
+      height="500"
+      width="500"
       loading="lazy"
     />
   </section>
